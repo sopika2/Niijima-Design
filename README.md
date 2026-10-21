@@ -24,8 +24,8 @@ From GitHub, pinned to a tag:
 pnpm add github:sopika2/Niijima-Design#v0.1.0
 ```
 
-pnpm builds the package on install (`prepare`). Docker builds need network access to GitHub,
-nothing else; the repo is public.
+The built files (`dist/`) are committed, so installing needs no build step. Docker builds need
+network access to GitHub, nothing else; the repo is public.
 
 ## Use
 
@@ -78,7 +78,7 @@ headers)` to keep each persona's data apart, and to render the right colours on 
 ```sh
 pnpm install
 pnpm dev       # the demo page with every component: http://localhost:5173
-pnpm verify    # format, type checks, tests, build, package lint
+pnpm verify    # format, type checks, tests, build, package lint, dist/ up to date
 ```
 
 Release: bump `version` in `package.json`, merge, then tag `vX.Y.Z` on main; apps move to the new

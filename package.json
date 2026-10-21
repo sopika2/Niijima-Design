@@ -36,13 +36,12 @@
 	},
 	"scripts": {
 		"build": "svelte-package -i src/lib -o dist",
-		"prepare": "svelte-package -i src/lib -o dist",
 		"dev": "vite demo",
 		"check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
 		"test": "vitest run",
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
-		"verify": "pnpm lint && pnpm check && pnpm test && pnpm build && publint"
+		"verify": "pnpm lint && pnpm check && pnpm test && pnpm build && publint && git diff --exit-code -- dist"
 	},
 	"devDependencies": {
 		"@sveltejs/package": "^2.5.7",
