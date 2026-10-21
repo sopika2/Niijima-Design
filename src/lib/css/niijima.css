@@ -1,0 +1,4 @@
+/* Everything in one import: fonts, tokens and components. */
+@import '../fonts/fonts.css';
+@import './tokens.css';
+@import './components.css';

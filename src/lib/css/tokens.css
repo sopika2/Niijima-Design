@@ -1,0 +1,96 @@
+/*
+ * Niijima Network: design tokens.
+ *
+ * Raw colours are named after what they are (ink, paper, thief red, each sister's palette);
+ * the semantic ones (--nj-field, --nj-hi, …) are what components use, and they change with
+ * the persona: put data-persona="makoto" or "sae" on <html> (persona.js does it for you) and
+ * every page re-colours to that sister. Without one you get the neutral Network look.
+ */
+:root {
+	/* ── raw palette (from niijimasisters.com) ── */
+	--nj-ink: #0b0b0d;
+	--nj-ink-raised: #1b1b20;
+	--nj-paper: #ffffff;
+	--nj-paper-muted: #b8b3ad;
+	--nj-red: #d90416;
+	--nj-red-text: #ff5a6a; /* a lighter thief red, readable as small text on ink */
+	--nj-focus: #ffe600;
+	--nj-locked: #8b8b95;
+
+	--nj-makoto: #12151f;
+	--nj-makoto-deep: #07080c;
+	--nj-makoto-steel: #7c7a73;
+	--nj-makoto-chrome: #dbd7cb;
+	--nj-makoto-cyan: #3fd8ff;
+
+	--nj-sae-crimson: #6e0014;
+	--nj-sae-blood: #3d000b;
+	--nj-sae-gold: #ffc61a;
+	--nj-sae-violet: #a832ff;
+
+	--nj-dot: rgba(11, 11, 13, 0.34);
+	--nj-dot-light: rgba(255, 255, 255, 0.22);
+	--nj-veil: rgba(11, 11, 13, 0.55);
+
+	/* ── semantic: what components use ── */
+	--nj-bg: var(--nj-ink); /* the page */
+	--nj-field: var(--nj-ink); /* big coloured areas: halves, heroes */
+	--nj-field-deep: var(--nj-ink-raised); /* numerals and shadows inside a field */
+	--nj-surface: #16161b; /* cards and panels */
+	--nj-surface-raised: #1f1f26;
+	--nj-text: var(--nj-paper);
+	--nj-text-muted: var(--nj-paper-muted);
+	--nj-accent: var(--nj-red); /* the one red: blades, button backs, stamps */
+	--nj-hi: var(--nj-makoto-cyan); /* the second colour: cursor shard, plates, links */
+	--nj-hi-ink: var(--nj-ink); /* text drawn on --nj-hi */
+	--nj-hi-2: var(--nj-sae-gold); /* a third, for "the other sister" or warnings */
+	--nj-income: var(--nj-sae-gold);
+	--nj-expense: var(--nj-red-text);
+
+	/* ── type ── */
+	--nj-font-display: Anton, Impact, 'Arial Narrow Bold', sans-serif;
+	--nj-font-body: 'Barlow Semi Condensed', 'Arial Narrow', Arial, sans-serif;
+	--nj-font-ransom-a: 'Abril Fatface', Didot, Georgia, serif;
+	--nj-font-ransom-b: 'Alfa Slab One', Rockwell, Georgia, serif;
+	--nj-font-ransom-c: 'Archivo Black', 'Arial Black', sans-serif;
+	--nj-font-ransom-d: 'Special Elite', 'Courier New', monospace;
+
+	/* ── shape and motion ── */
+	--nj-tilt-xs: -1.5deg;
+	--nj-tilt-sm: -3deg;
+	--nj-tilt-md: -6deg;
+	--nj-tilt-lg: -12deg;
+	--nj-snap: cubic-bezier(0.2, 1.45, 0.4, 1);
+	--nj-cut: cubic-bezier(0.75, 0, 0.2, 1);
+	--nj-fast: 0.16s;
+	--nj-normal: 0.26s;
+}
+
+/* Makoto: navy and steel, the cyan of her mask's lights. */
+[data-persona='makoto'] {
+	--nj-field: var(--nj-makoto);
+	--nj-field-deep: var(--nj-makoto-deep);
+	--nj-surface: #151925;
+	--nj-surface-raised: #1d2230;
+	--nj-hi: var(--nj-makoto-cyan);
+	--nj-hi-ink: var(--nj-ink);
+	--nj-hi-2: var(--nj-makoto-chrome);
+}
+
+/* Sae: crimson and gold, the violet neon of the interrogation room. */
+[data-persona='sae'] {
+	--nj-field: var(--nj-sae-crimson);
+	--nj-field-deep: var(--nj-sae-blood);
+	--nj-surface: #1d0f13;
+	--nj-surface-raised: #2a1419;
+	--nj-hi: var(--nj-sae-gold);
+	--nj-hi-ink: var(--nj-ink);
+	--nj-hi-2: var(--nj-sae-violet);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--nj-fast: 0.001ms;
+		--nj-normal: 0.001ms;
+	}
+}
